@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Rig 3D Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="title">
+            <h1>🛸 Drone Rig 3D Visualizer</h1>
+            <p>Real-Time Orientation & Manual Test Interface</p>
+        </div>
+        <div class="mode-selector">
+            <button id="manual-mode" class="mode-btn active">MANUAL MODE</button>
+            <button id="live-mode" class="mode-btn">LIVE DATA MODE</button>
+        </div>
+        <div class="connection-status">
+            <span id="status-dot">🟢</span>
+            <span id="status-text">Connected</span>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="left-panel">
+            <div class="section live-metrics">
+                <h2>LIVE METRICS</h2>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <label>Roll</label>
+                        <span id="roll-value">0.00</span> °
+                    </div>
+                    <div class="metric">
+                        <label>Pitch</label>
+                        <span id="pitch-value">0.00</span> °
+                    </div>
+                    <div class="metric">
+                        <label>Yaw</label>
+                        <span id="yaw-value">0.00</span> °
+                    </div>
+                    <div class="metric">
+                        <label>Throttle</label>
+                        <span id="throttle-value">0.00</span> %
+                    </div>
+                    <div class="metric">
+                        <label>Battery</label>
+                        <span id="battery-value">12.00</span> V
+                    </div>
+                    <div class="metric">
+                        <label>Total RPM</label>
+                        <span id="rpm-value">0</span> RPM
+                    </div>
+                </div>
+            </div>
+            <div class="section manual-joystick">
+                <h2>MANUAL JOYSTICK</h2>
+                <div class="joysticks">
+                    <div class="joystick-container">
+                        <h3>THROTTLE & YAW</h3>
+                        <canvas id="left-joystick" width="200" height="200"></canvas>
+                        <div class="joystick-values">
+                            <span>Throttle: <span id="left-throttle">0.00</span>%</span>
+                            <span>Yaw: <span id="left-yaw">0.00</span>°</span>
+                        </div>
+                    </div>
+                    <div class="joystick-container">
+                        <h3>PITCH & ROLL</h3>
+                        <canvas id="right-joystick" width="200" height="200"></canvas>
+                        <div class="joystick-values">
+                            <span>Pitch: <span id="right-pitch">0.00</span>°</span>
+                            <span>Roll: <span id="right-roll">0.00</span>°</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section debug-info">
+                <h2>ADVANCED / DEBUG INFO</h2>
+                <div class="debug-grid">
+                    <div>FPS: <span id="fps-value">60</span></div>
+                    <div>Data Source: <span id="data-source">Manual</span></div>
+                    <div>Euler Order: ZYX</div>
+                    <div>Last Update: <span id="last-update">Now</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div id="threejs-container"></div>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <span id="bottom-status">Manual input active</span>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="joystick.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
